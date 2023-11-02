@@ -8,7 +8,7 @@ Esta es la lista de pasos que segui para realizar este stack.
 
 -2 Luego dentro de services defino todos los contenedores que va a levantar la red y los configuro.
 
- -MySQL:Configurar y definino los parametros del mismo. 
+  -MySQL:Configurar y definino los parametros del mismo. 
   - (image: mysql:5.7) Defino la version de MySQL.
   - (container_name: ds-wordpress-6.1.1-mysql) Indico el nombre del contenedor (el cual se usara para la conexion con la base de datos).
   - (tty: true) Se habilita para poder conectar la base de datos desde un terminal y poder lanzar comando SQL.
@@ -21,7 +21,7 @@ Esta es la lista de pasos que segui para realizar este stack.
       - MYSQL_PASSWORD: mipassword (Databese User Password)
   - (networks: - ds-wordpress-6.1.1-net) Le asigno la red previamente ya creada.
     
--WordPress:configuro y defino los parametros del mismo. 
+  -WordPress:configuro y defino los parametros del mismo. 
   - (image: wordpress:latest) Defino la version de WordPress.
   - (container_name: ds-wordpress-6.1.1) Le asigno este nombre al contenedor.
   - (ports: - "4282:80") Asignamos los puertos por el cual se conectara la aplicacion.
