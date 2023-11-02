@@ -15,24 +15,36 @@ Esta es la lista de pasos que segui para realizar este stack.
   - (ports: - "4208:3306") Asignamos los puertos por el cual se conectara la aplicacion.
   - (volumes: - "./var/libclea/mysql/:/var/lib/mysql") Definimos un directorio donde se guardaran los datos de la base de datos, (esto es muy importante para que en caso de para la aplicacion no se restablezca los datos).
   - (environment) Creo variables de entorno para definir la contraseñas ROOT, crear la base de datos y un usuario y contraseña para la misma.
-      - MYSQL_ROOT_PASSWORD: 1234 (Root Password)
-      - MYSQL_DATABASE: wordpress (Database Name)
-      - MYSQL_USER: miusuario (Database Username)
-      - MYSQL_PASSWORD: mipassword (Databese User Password)
+      - MYSQL_ROOT_PASSWORD: 1234 (Root Password).
+      - MYSQL_DATABASE: wordpress (Database Name).
+      - MYSQL_USER: miusuario (Database Username).
+      - MYSQL_PASSWORD: mipassword (Databese User Password).
   - (networks: - ds-wordpress-6.1.1-net) Le asigno la red previamente ya creada.
     
-  -WordPress:configuro y defino los parametros del mismo. 
+  -WordPress: configuro y defino los parametros del mismo. 
   - (image: wordpress:latest) Defino la version de WordPress.
   - (container_name: ds-wordpress-6.1.1) Le asigno este nombre al contenedor.
   - (ports: - "4282:80") Asignamos los puertos por el cual se conectara la aplicacion.
   - (volumes: - "./var/www/html/:/var/www/html") Definimos un directorio donde se guardaran los datos persistentes de WordPress, (esto es muy importante para que en caso de para la aplicacion no se restablezca los datos).
   - (environment) Creo variables de entorno para nombrar la base de datos, asignar un usuario y una contraseña para la misma y designarle el host (En este caso ser MySQL).
-      - WORDPRESS_DB_USER: miusuario (WordPress Database Username)
-      - WORDPRESS_DB_PASSWORD: mipassword (WordPress Database Password)
-      - WORDPRESS_DB_NAME: wordpress (WordPress Database Name)
+      - WORDPRESS_DB_USER: miusuario (WordPress Database Username).
+      - WORDPRESS_DB_PASSWORD: mipassword (WordPress Database Password).
+      - WORDPRESS_DB_NAME: wordpress (WordPress Database Name).
       - WORDPRESS_DB_HOST: ds-wordpress-6.1.1-mysql (Database Host, llama al container previamente creado en la configuracion de MySQL)
   - (depends_on: - mysql) Creo una dependencia del contenedor WordPress hacia el contenedor MySQL
   - (networks: - ds-wordpress-6.1.1-net) Le asigno la red previamente ya creada.
+    
+  -phpMyAdmin: configuro y defino los parametros del mismo.
+  - (image: phpmyadmin/phpmyadmin) Defino la version de phpMyAdmin.
+  - (container_name: ds-phpmyadmin) Le asigno este nombre al contenedor.
+  - (ports:  - "4283:80") Asignamos los puertos por el cual se conectara la aplicacion.
+  - (environment) Creo variables de entorno, la primera para definir la ubicacion de la base de datos MySQL y la segunda es darle la contraseña root de la misma.
+      -PMA_HOST: ds-wordpress-6.1.1-mysql (Database Host, llama al container previamente creado en la configuracion de MySQL).
+      -MYSQL_ROOT_PASSWORD: 1234 (MySQL Root Password, colocamos la contraseña root de MySQL previamente colocada en la configuracion del servicio MySQL).
+  - (depends_on: - mysql) Creo una dependencia del contenedor phpMyAdmin hacia el contenedor MySQL.
+  - (networks: - ds-wordpress-6.1.1-net) Le asigno la red previamente ya creada.
+            
+           
             
             
             
