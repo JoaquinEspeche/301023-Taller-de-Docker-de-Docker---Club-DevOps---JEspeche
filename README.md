@@ -43,6 +43,10 @@ Esta es la lista de pasos que segui para realizar este stack.
       -MYSQL_ROOT_PASSWORD: 1234 (MySQL Root Password, colocamos la contraseña root de MySQL previamente colocada en la configuracion del servicio MySQL).
   - (depends_on: - mysql) Creo una dependencia del contenedor phpMyAdmin hacia el contenedor MySQL.
   - (networks: - ds-wordpress-6.1.1-net) Le asigno la red previamente ya creada.
+    
+-3 Una vez ya confugurado todos los servicios de nuestro Stack nos dirigimos al directorio de docker, donde tenemos el archivo docker-compose.yml y ejecutamos desde un terminal el siguiente comando ("sudo docker-compose up").
+
+-4 Esperamos a que se levanten todos los servicios y nos dirigimos al navegador web a la dirección localhost:4282 (o al puerto que hayas especificado para WordPress).
             
            
             
