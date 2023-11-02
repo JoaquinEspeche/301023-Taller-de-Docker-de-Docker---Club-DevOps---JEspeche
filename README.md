@@ -8,7 +8,7 @@ Esta es la lista de pasos que segui para realizar este stack.
 
 -2 Luego dentro de services defino todos los contenedores que va a levantar la red y los configuro.
 
- - MySQL:Configurar y definino los parametros del mismo. 
+ -MySQL:Configurar y definino los parametros del mismo. 
   - (image: mysql:5.7) Defino la version de MySQL.
   - (container_name: ds-wordpress-6.1.1-mysql) Indico el nombre del contenedor (el cual se usara para la conexion con la base de datos).
   - (tty: true) Se habilita para poder conectar la base de datos desde un terminal y poder lanzar comando SQL.
