@@ -39,8 +39,8 @@ Esta es la lista de pasos que segui para realizar este stack.
   - (container_name: ds-phpmyadmin) Le asigno este nombre al contenedor.
   - (ports:  - "4283:80") Asignamos los puertos por el cual se conectara la aplicacion.
   - (environment) Creo variables de entorno, la primera para definir la ubicacion de la base de datos MySQL y la segunda es darle la contraseña root de la misma.
-      -PMA_HOST: ds-wordpress-6.1.1-mysql (Database Host, llama al container previamente creado en la configuracion de MySQL).
-      -MYSQL_ROOT_PASSWORD: 1234 (MySQL Root Password, colocamos la contraseña root de MySQL previamente colocada en la configuracion del servicio MySQL).
+      - PMA_HOST: ds-wordpress-6.1.1-mysql (Database Host, llama al container previamente creado en la configuracion de MySQL).
+      - MYSQL_ROOT_PASSWORD: 1234 (MySQL Root Password, colocamos la contraseña root de MySQL previamente colocada en la configuracion del servicio MySQL).
   - (depends_on: - mysql) Creo una dependencia del contenedor phpMyAdmin hacia el contenedor MySQL.
   - (networks: - ds-wordpress-6.1.1-net) Le asigno la red previamente ya creada.
     
